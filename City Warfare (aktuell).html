@@ -63,6 +63,150 @@
             margin-bottom: 40px;
             letter-spacing: 2px;
         }
+        #main-menu-screen {
+            overflow: hidden;
+        }
+        .menu-layout {
+            width: 100%;
+            max-width: 760px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            padding: 20px;
+        }
+        .menu-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .menu-preview-panel {
+            width: 320px;
+            height: 300px;
+            background: linear-gradient(180deg, rgba(18, 22, 30, 0.88), rgba(8, 10, 14, 0.96));
+            border: 1px solid #2f3643;
+            box-shadow: inset 0 0 25px rgba(255, 74, 74, 0.06), 0 0 25px rgba(0,0,0,0.35);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        #menu-tank-preview {
+            width: 100%;
+            height: 240px;
+            position: relative;
+        }
+        #menu-tank-preview canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+        #menu-preview-label {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: #e5e7eb;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+        #menu-preview-meta {
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            color: #9ca3af;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+        #menu-requirement-banner {
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, rgba(25, 29, 38, 0.95), rgba(38, 46, 58, 0.95));
+            border: 1px solid #ff4a4a;
+            color: #fff;
+            padding: 10px 16px;
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            z-index: 12;
+            white-space: nowrap;
+            box-shadow: 0 0 18px rgba(255, 74, 74, 0.18);
+        }
+        #menu-preview-stats {
+            width: 80%;
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 10px;
+            font-size: 0.68rem;
+            letter-spacing: 1.5px;
+            color: #d1d5db;
+        }
+        .preview-stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .preview-stat-row span {
+            color: #9ca3af;
+            text-transform: uppercase;
+        }
+        .preview-stat-row strong {
+            color: #f3f4f6;
+        }
+        #tank-select-panel {
+            width: min(420px, 100%);
+            background: rgba(15, 18, 22, 0.78);
+            border: 1px solid #303845;
+            padding: 14px;
+            margin-bottom: 18px;
+        }
+        #tank-select-panel h2 {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        #tank-option-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .tank-option {
+            background: linear-gradient(180deg, #242a35, #151b23);
+            color: #d1d5db;
+            border: 1px solid #3f495b;
+            padding: 10px 6px;
+            font: inherit;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .tank-option:hover:not(:disabled) {
+            border-color: #ff4a4a;
+            color: #fff;
+            transform: translateY(-1px);
+        }
+        .tank-option.active {
+            background: linear-gradient(180deg, #3d1d1d, #1a0f0f);
+            border-color: #ff4a4a;
+            color: #fff;
+            box-shadow: inset 0 0 12px rgba(255, 74, 74, 0.18), 0 0 10px rgba(255, 74, 74, 0.12);
+        }
+        .tank-option.locked {
+            opacity: 0.6;
+            background: linear-gradient(180deg, #1f232d, #11161d);
+            border-color: #3d4757;
+        }
+        .tank-option:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
         .menu-btn {
             background: linear-gradient(135deg, #2e3440 0%, #1a1f29 100%);
             color: #e5e7eb;
@@ -167,6 +311,65 @@
             box-shadow: 0 0 20px rgba(230, 92, 0, 0.5);
             display: none;
         }
+        #boss-hud {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 260px;
+            background: rgba(15, 18, 22, 0.82);
+            border-left: 4px solid #ff4a4a;
+            padding: 10px 14px;
+            display: none;
+            z-index: 5;
+        }
+        #boss-marker {
+            position: absolute;
+            display: none;
+            z-index: 6;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(90deg, rgba(255, 74, 74, 0.94), rgba(255, 138, 0, 0.88));
+            color: #fff;
+            padding: 7px 10px;
+            font-size: 0.78rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border: 1px solid #ffd1a3;
+            border-radius: 999px;
+            box-shadow: 0 0 18px rgba(255, 74, 74, 0.55);
+            white-space: nowrap;
+        }
+        #tank-unlock-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            z-index: 7;
+            background: rgba(15, 18, 22, 0.92);
+            border: 1px solid #2ecc71;
+            color: #eafff2;
+            padding: 10px 16px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            box-shadow: 0 0 22px rgba(46, 204, 113, 0.35);
+            pointer-events: none;
+        }
+        #boss-bar {
+            width: 100%;
+            height: 10px;
+            background: #2e3440;
+            border: 1px solid #4c566a;
+            overflow: hidden;
+        }
+        #boss-bar-fill {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff4a4a, #ff8a00);
+            transition: width 0.1s linear;
+        }
         @keyframes pulse {
             0% { opacity: 0.8; }
             50% { opacity: 1; transform: translateX(-50%) scale(1.03); }
@@ -249,12 +452,31 @@
         
         <!-- Hauptmenü -->
         <div id="main-menu-screen" class="screen">
-            <h1>CITY WARFARE</h1>
-            <div class="subtitle">TACTICAL TANK COMBAT</div>
-            <button id="start-button" class="menu-btn">GEFECHT STARTEN</button>
-            <div style="margin-top: 30px; font-size: 0.8rem; color: #a1aab8; line-height: 1.6;">
-                WASD = Steuern &bull; Maus = Turm drehen &bull; Links-Klick = Schießen<br>
-                SHIFT (Halten) = Sniper-Visier &bull; E = Reparieren an Stationen
+            <div id="menu-requirement-banner">BENÖTIGT: 0 PUNKTE</div>
+            <div class="menu-layout">
+                <div class="menu-panel">
+                    <h1>CITY WARFARE</h1>
+                    <div class="subtitle">TACTICAL TANK COMBAT</div>
+                    <div id="tank-select-panel">
+                        <h2>Tank Auswahl</h2>
+                        <div id="tank-option-list">
+                            <button class="tank-option" data-index="0">STANDARD</button>
+                            <button class="tank-option" data-index="1">HEAVY</button>
+                            <button class="tank-option" data-index="2">SCOUT</button>
+                        </div>
+                    </div>
+                    <button id="start-button" class="menu-btn">GEFECHT STARTEN</button>
+                    <div style="margin-top: 30px; font-size: 0.8rem; color: #a1aab8; line-height: 1.6;">
+                        WASD = Steuern &bull; Maus = Turm drehen &bull; Links-Klick = Schießen<br>
+                        SHIFT (Halten) = Sniper-Visier &bull; E = Reparieren an Stationen
+                    </div>
+                </div>
+                <div class="menu-preview-panel">
+                    <div id="menu-tank-preview"></div>
+                    <div id="menu-preview-label">STANDARD</div>
+                    <div id="menu-preview-meta">VERFÜGBAR</div>
+                    <div id="menu-preview-stats"></div>
+                </div>
             </div>
         </div>
 
@@ -276,13 +498,21 @@
                 </div>
             </div>
             <div class="ui-row">
-                <div id="lives-display" class="ui-box">LEBEN: ❤❤❤</div>
+                <div id="lives-display" class="ui-box">LEBEN: ❤❤❤❤</div>
+            </div>
+            <div class="ui-row">
+                <div id="boss-hud" class="ui-box">
+                    <div style="font-size: 0.75rem; color: #ff9a9a; margin-bottom: 4px; letter-spacing: 1px;">BOSS</div>
+                    <div id="boss-bar"><div id="boss-bar-fill"></div></div>
+                </div>
             </div>
         </div>
 
         <!-- Reparatursystem Prompts -->
         <div id="repair-prompt">DRÜCKE [E] FÜR REPARATUR</div>
         <div id="repair-timer-display">REPARATUR: 3.0s</div>
+        <div id="boss-marker">BOSS</div>
+        <div id="tank-unlock-message">TANK FREIGESCHALTET</div>
 
         <!-- Sniper-Visier Effekte -->
         <div id="scope-vignette"></div>
@@ -314,11 +544,19 @@
         const BULLET_Y = 1.75; 
         const MAX_ENEMIES = 10; 
         const MAX_PARTICLES = 250; 
+        const BOSS_SPAWN_SCORE = 700;
+        const BOSS_MAX_ACTIVE_BULLETS = 40;
 
         let score = 0;
-        let lives = 3;
+        let lives = 4;
+        let maxLives = 4;
         let gameOver = false;
         let shakeIntensity = 0;
+        let boss = null;
+        let cheatBuffer = [];
+        let unlockCheatBuffer = [];
+        const CHEAT_CODE = ['s', 'c', 'o', 'r', 'e', '7', '0', '0'];
+        const UNLOCK_CHEAT_CODE = ['u', 'n', 'l', 'o', 'c', 'k'];
 
         let isZoomed = false;
         let currentCamDist = 14;  
@@ -337,6 +575,12 @@
         const gameOverScreen = document.getElementById('game-over-screen');
         const restartButton = document.getElementById('restart-button');
         const toMenuButton = document.getElementById('to-menu-button');
+        const menuTankOptions = document.querySelectorAll('.tank-option');
+        const menuTankPreview = document.getElementById('menu-tank-preview');
+        const menuPreviewLabel = document.getElementById('menu-preview-label');
+        const menuPreviewMeta = document.getElementById('menu-preview-meta');
+        const menuPreviewStats = document.getElementById('menu-preview-stats');
+        const menuRequirementBanner = document.getElementById('menu-requirement-banner');
         const uiContainer = document.getElementById('ui-container');
         const crosshairContainer = document.getElementById('crosshair-container');
         const scopeVignette = document.getElementById('scope-vignette');
@@ -348,7 +592,11 @@
 
         const repairPrompt = document.getElementById('repair-prompt');
         const repairTimerDisplay = document.getElementById('repair-timer-display');
+        const bossMarker = document.getElementById('boss-marker');
+        const tankUnlockMessage = document.getElementById('tank-unlock-message');
         const reloadBarFill = document.getElementById('reload-bar-fill');
+        const bossHud = document.getElementById('boss-hud');
+        const bossBarFill = document.getElementById('boss-bar-fill');
         const fullscreenBtn = document.getElementById('fullscreen-btn');
 
         const scene = new THREE.Scene();
@@ -362,6 +610,23 @@
         renderer.shadowMap.enabled = true; 
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         container.appendChild(renderer.domElement);
+
+        const menuPreviewRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        menuPreviewRenderer.setSize(320, 240);
+        menuPreviewRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        menuTankPreview.appendChild(menuPreviewRenderer.domElement);
+
+        const menuPreviewScene = new THREE.Scene();
+        const menuPreviewCamera = new THREE.PerspectiveCamera(32, 320 / 240, 0.1, 1000);
+        menuPreviewScene.background = new THREE.Color(0x0f1117);
+        const menuPreviewAmbient = new THREE.AmbientLight(0x90a0c0, 1.2);
+        menuPreviewScene.add(menuPreviewAmbient);
+        const menuPreviewDir = new THREE.DirectionalLight(0xffffff, 0.75);
+        menuPreviewDir.position.set(20, 35, 18);
+        menuPreviewScene.add(menuPreviewDir);
+        const menuPreviewFill = new THREE.DirectionalLight(0x77aaff, 0.35);
+        menuPreviewFill.position.set(-18, 10, -18);
+        menuPreviewScene.add(menuPreviewFill);
 
         // Beleuchtung für die Spielwelt
         const ambientLight = new THREE.AmbientLight(0x404a5e, 0.8); 
@@ -575,6 +840,9 @@
 
         const bulletMat = new THREE.MeshBasicMaterial({ color: 0xffaa00 }); 
         const enemyBulletMat = new THREE.MeshBasicMaterial({ color: 0x00ffcc });
+        const bossBodyMat = new THREE.MeshStandardMaterial({ color: 0x7a1111, roughness: 0.35, metalness: 0.6 });
+        const bossTurretMat = new THREE.MeshStandardMaterial({ color: 0xc61f1f, roughness: 0.25, metalness: 0.5 });
+        const bossDetailMat = new THREE.MeshStandardMaterial({ color: 0x300909, roughness: 0.65 });
 
         const enemyStyles = [
             {
@@ -596,6 +864,47 @@
                 type: 'scout', speed: 0.16, hp: 1, fireRange: 45, cooldown: 1500
             }
         ];
+
+        const playerTankPresets = [
+            {
+                name: 'STANDARD',
+                type: 'player',
+                body: playerMat,
+                turret: turretMat,
+                detail: armorDetailMat,
+                maxSpeed: 0.38,
+                accel: 0.018,
+                shotCooldown: 1000,
+                radius: 2.0
+            },
+            {
+                name: 'HEAVY',
+                type: 'heavy',
+                body: enemyStyles[1].body,
+                turret: enemyStyles[1].turret,
+                detail: enemyStyles[1].detail,
+                maxSpeed: 0.29,
+                accel: 0.012,
+                shotCooldown: 1200,
+                radius: 2.3
+            },
+            {
+                name: 'SCOUT',
+                type: 'scout',
+                body: enemyStyles[2].body,
+                turret: enemyStyles[2].turret,
+                detail: enemyStyles[2].detail,
+                maxSpeed: 0.46,
+                accel: 0.022,
+                shotCooldown: 800,
+                radius: 1.8
+            }
+        ];
+
+        const playerTankUnlockScores = [0, 1400, 2800];
+        let playerTankStyle = 0;
+        let unlockedTankStyles = [true, false, false];
+        let tankUnlockMessageTimer = 0;
 
         function createBuildingMaterial(baseColorHex) {
             const canvas = document.createElement('canvas');
@@ -683,18 +992,25 @@
             tracks.push({ mesh: mark, life: 180 });
         }
 
-        function create3DTankMesh(isPlayer, styleIndex = 0) {
+        function create3DTankMesh(isPlayer, styleIndex = 0, isBossMesh = false) {
             const group = new THREE.Group();
-            let style = styleIndex;
+            let style = Math.max(0, Math.min(styleIndex, playerTankPresets.length - 1));
             
-            const currentBodyMat = isPlayer ? playerMat : enemyStyles[style].body;
-            const currentTurretMat = isPlayer ? turretMat : enemyStyles[style].turret;
-            const currentDetailMat = isPlayer ? armorDetailMat : enemyStyles[style].detail;
-            const configType = isPlayer ? 'player' : enemyStyles[style].type;
+            const preset = isPlayer ? playerTankPresets[style] : (isBossMesh ? {
+                body: bossBodyMat,
+                turret: bossTurretMat,
+                detail: bossDetailMat,
+                type: 'boss'
+            } : enemyStyles[style]);
+            const currentBodyMat = preset.body;
+            const currentTurretMat = preset.turret;
+            const currentDetailMat = preset.detail;
+            const configType = isPlayer ? preset.type : (isBossMesh ? 'boss' : enemyStyles[style].type);
 
             let length = 3.6, width = 2.5;
             if (configType === 'heavy') { length = 4.2; width = 3.0; } 
             if (configType === 'scout') { length = 3.1; width = 2.1; } 
+            if (configType === 'boss') { length = 4.8; width = 3.4; } 
             
             const shape = new THREE.Shape();
             shape.moveTo(-length/2, -width/2); shape.lineTo(length/3, -width/2);  
@@ -774,14 +1090,115 @@
             const muzzle = new THREE.Mesh(muzzleGeo, pipeMat); muzzle.position.x = barrelLen + 0.15; muzzle.castShadow = true; barrelGroup.add(muzzle);
             
             turretGroup.add(barrelGroup); group.add(turretGroup);
+            if (configType === 'boss') {
+                const bossRing = new THREE.Mesh(new THREE.TorusGeometry(1.45, 0.08, 12, 24), new THREE.MeshBasicMaterial({ color: 0xff4444 }));
+                bossRing.position.set(0, 1.85, 0); bossRing.rotation.x = Math.PI / 2; group.add(bossRing);
+            }
             return { mainGroup: group, turret: turretGroup, segments: trackSegments, exhaust: exhaust };
         }
 
-        const player3D = create3DTankMesh(true);
+        let player3D = create3DTankMesh(true);
         scene.add(player3D.mainGroup);
 
         const player = { x: -175, z: 175, angle: 0, turretAngle: 0, speed: 0, maxSpeed: 0.38, accel: 0.018, friction: 0.008, rotSpeed: 0.045, radius: 2.0, lastShot: 0, shotCooldown: 1000, distTraveled: 0 };
         let obstacles = [];
+        let menuPreviewMesh = null;
+        let selectedTankIndex = 0;
+
+        function updateTankSelectorUI() {
+            menuTankOptions.forEach(btn => {
+                const idx = Number(btn.dataset.index);
+                const unlocked = unlockedTankStyles[idx];
+                btn.classList.toggle('active', idx === selectedTankIndex);
+                btn.classList.toggle('locked', !unlocked);
+                btn.disabled = false;
+            });
+            const selectedPreset = playerTankPresets[selectedTankIndex];
+            const neededPoints = playerTankUnlockScores[selectedTankIndex];
+            menuPreviewLabel.textContent = selectedPreset.name;
+            menuPreviewMeta.textContent = unlockedTankStyles[selectedTankIndex] ? 'VERFÜGBAR' : `BENÖTIGT: ${neededPoints} PUNKTE`;
+            menuRequirementBanner.textContent = unlockedTankStyles[selectedTankIndex] ? `VERFÜGBAR · ${selectedPreset.name}` : `BENÖTIGT: ${neededPoints} PUNKTE FÜR ${selectedPreset.name}`;
+            menuPreviewStats.innerHTML = `
+                <div class="preview-stat-row"><span>Geschw.</span><strong>${selectedPreset.maxSpeed.toFixed(2).replace('.', ',')}</strong></div>
+                <div class="preview-stat-row"><span>Reload</span><strong>${selectedPreset.shotCooldown}ms</strong></div>
+                <div class="preview-stat-row"><span>Panzer</span><strong>${selectedPreset.radius.toFixed(1).replace('.', ',')}</strong></div>
+                <div class="preview-stat-row"><span>Typ</span><strong>${selectedPreset.type.toUpperCase()}</strong></div>
+            `;
+        }
+
+        function updateMenuTankPreview() {
+            if (menuPreviewMesh && menuPreviewMesh.mainGroup) {
+                menuPreviewScene.remove(menuPreviewMesh.mainGroup);
+                menuPreviewMesh.mainGroup.traverse((child) => {
+                    if (child.geometry) cleanCleanupMesh(child);
+                });
+            }
+            menuPreviewMesh = create3DTankMesh(true, selectedTankIndex);
+            menuPreviewScene.add(menuPreviewMesh.mainGroup);
+            menuPreviewMesh.mainGroup.position.set(0, 0, 0);
+            menuPreviewMesh.mainGroup.rotation.y = Math.PI * 0.15;
+            menuPreviewMesh.turret.rotation.y = -0.25;
+            menuPreviewCamera.position.set(0, 5.3, 11.5);
+            menuPreviewCamera.lookAt(0, 1.2, 0);
+            updateTankSelectorUI();
+        }
+
+        function setSelectedTank(index) {
+            if (!playerTankPresets[index]) return;
+            selectedTankIndex = index;
+            if (unlockedTankStyles[index]) {
+                playerTankStyle = index;
+                const preset = playerTankPresets[index];
+                player.maxSpeed = preset.maxSpeed;
+                player.accel = preset.accel;
+                player.shotCooldown = preset.shotCooldown;
+                player.radius = preset.radius;
+                if (player3D) rebuildPlayerTank();
+            }
+            updateMenuTankPreview();
+        }
+
+        function canStartWithSelectedTank() {
+            return unlockedTankStyles[selectedTankIndex];
+        }
+
+        function showTankUnlockMessage(text) {
+            tankUnlockMessage.textContent = text;
+            tankUnlockMessage.style.display = 'block';
+            tankUnlockMessageTimer = 180;
+        }
+
+        function rebuildPlayerTank() {
+            if (player3D && player3D.mainGroup) {
+                scene.remove(player3D.mainGroup);
+                player3D.mainGroup.traverse((child) => {
+                    if (child.geometry) cleanCleanupMesh(child);
+                });
+            }
+            player3D = create3DTankMesh(true, playerTankStyle);
+            scene.add(player3D.mainGroup);
+            player3D.mainGroup.position.set(player.x, 0, player.z);
+            player3D.mainGroup.rotation.y = player.angle;
+            player3D.turret.rotation.y = player.turretAngle - player.angle;
+        }
+
+        function updateUnlockedTanks() {
+            for (let i = 1; i < playerTankPresets.length; i++) {
+                if (!unlockedTankStyles[i] && score >= playerTankUnlockScores[i]) {
+                    unlockedTankStyles[i] = true;
+                    playerTankStyle = i;
+                    player.maxSpeed = playerTankPresets[i].maxSpeed;
+                    player.accel = playerTankPresets[i].accel;
+                    player.shotCooldown = playerTankPresets[i].shotCooldown;
+                    player.radius = playerTankPresets[i].radius;
+                    rebuildPlayerTank();
+                    selectedTankIndex = i;
+                    updateMenuTankPreview();
+                    showTankUnlockMessage(`${playerTankPresets[i].name} FREIGESCHALTET`);
+                    break;
+                }
+            }
+        }
 
         function spawnRepairStation(x, z) {
             const stationGroup = new THREE.Group(); stationGroup.position.set(x, 0, z);
@@ -879,21 +1296,33 @@
 
         let bullets = []; let enemies = []; const keys = {};
 
+        menuTankOptions.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const idx = Number(btn.dataset.index);
+                setSelectedTank(idx);
+            });
+        });
+
         startButton.addEventListener("click", () => {
+            if (!canStartWithSelectedTank()) {
+                showTankUnlockMessage(`BENÖTIGT ${playerTankUnlockScores[selectedTankIndex]} PUNKTE FÜR ${playerTankPresets[selectedTankIndex].name}`);
+                return;
+            }
             initAudio();
+            setSelectedTank(selectedTankIndex);
             mainMenuScreen.style.opacity = "0";
             setTimeout(() => {
                 mainMenuScreen.style.display = "none"; uiContainer.style.display = "flex"; gameState = STATE_GAME; container.requestPointerLock();
                 // Licht nach dem Menü wieder auf Normalwert setzen
                 ambientLight.intensity = 0.8;
                 sunLight.intensity = 0.45;
-                if(spawnInterval) clearInterval(spawnInterval); spawnInterval = setInterval(spawnEnemy, 2000);
+                startEnemySpawning();
             }, 500);
         });
 
         restartButton.addEventListener("click", () => {
             initAudio(); resetGame(); uiContainer.style.display = "flex"; gameState = STATE_GAME; container.requestPointerLock();
-            if(spawnInterval) clearInterval(spawnInterval); spawnInterval = setInterval(spawnEnemy, 2000);
+            startEnemySpawning();
         });
 
         toMenuButton.addEventListener("click", () => {
@@ -914,7 +1343,36 @@
         window.addEventListener("keydown", e => { 
             const loweredKey = e.key.toLowerCase(); keys[loweredKey] = true; 
             if (gameState === STATE_GAME && e.key === "Shift") { isZoomed = true; crosshairContainer.classList.add("zoom-active"); scopeVignette.style.display = "block"; }
-            if (gameState === STATE_GAME && loweredKey === "e" && activeStationUnderPlayer && repairCountdown <= 0 && lives < 3 && !gameOver) { repairCountdown = 150; player.speed = 0; repairPrompt.style.display = "none"; }
+            if (gameState === STATE_GAME && loweredKey === "e" && activeStationUnderPlayer && repairCountdown <= 0 && lives < maxLives && !gameOver) { repairCountdown = 150; player.speed = 0; repairPrompt.style.display = "none"; }
+            if (gameState === STATE_GAME) {
+                cheatBuffer.push(loweredKey);
+                if (cheatBuffer.length > CHEAT_CODE.length) cheatBuffer.shift();
+                if (cheatBuffer.join('') === CHEAT_CODE.join('')) {
+                    score = 700;
+                    document.getElementById("score-display").innerText = "SCORE: " + score;
+                    cheatBuffer = [];
+                    if (!boss) spawnBoss();
+                }
+            }
+            unlockCheatBuffer.push(loweredKey);
+            if (unlockCheatBuffer.length > UNLOCK_CHEAT_CODE.length) unlockCheatBuffer.shift();
+            if (unlockCheatBuffer.join('') === UNLOCK_CHEAT_CODE.join('')) {
+                unlockedTankStyles = unlockedTankStyles.map(() => true);
+                if (gameState === STATE_MENU) {
+                    updateTankSelectorUI();
+                    updateMenuTankPreview();
+                } else {
+                    playerTankStyle = Math.min(playerTankStyle, playerTankPresets.length - 1);
+                    player.maxSpeed = playerTankPresets[playerTankStyle].maxSpeed;
+                    player.accel = playerTankPresets[playerTankStyle].accel;
+                    player.shotCooldown = playerTankPresets[playerTankStyle].shotCooldown;
+                    player.radius = playerTankPresets[playerTankStyle].radius;
+                    rebuildPlayerTank();
+                    updateTankSelectorUI();
+                }
+                showTankUnlockMessage('ALLE TANKS FREIGESCHALTET');
+                unlockCheatBuffer = [];
+            }
         });
 
         window.addEventListener("keyup", e => {
@@ -959,10 +1417,40 @@
             const bulletLight = new THREE.PointLight(isPlayer ? 0xffaa00 : 0x00ffcc, 3, 6); bulletLight.position.set(0,0,0); mesh.add(bulletLight);
 
             bullets.push({ mesh: mesh, light: bulletLight, x: startX, y: BULLET_Y, z: startZ, vx: Math.cos(angle) * 1.2, vz: -Math.sin(angle) * 1.2, radius: 0.35, isPlayer: isPlayer, colorHex: isPlayer ? 0xffaa00 : 0x00ffcc });
+            if (bullets.length > BOSS_MAX_ACTIVE_BULLETS) {
+                for (let i = bullets.length - 1; i >= 0 && bullets.length > BOSS_MAX_ACTIVE_BULLETS; i--) {
+                    const oldBullet = bullets[i];
+                    if (oldBullet.mesh) {
+                        scene.remove(oldBullet.mesh);
+                        oldBullet.mesh.geometry.dispose();
+                        oldBullet.mesh.material.dispose();
+                    }
+                    if (oldBullet.light) scene.remove(oldBullet.light);
+                    bullets.splice(i, 1);
+                }
+            }
             createMuzzleFlashAndSmoke(new THREE.Vector3(startX, BULLET_Y, startZ), angle, isPlayer ? 0xff5500 : 0x00ffcc);
             playShotSound(isPlayer);
 
             if(isPlayer) { player.speed = -0.15; shakeIntensity = Math.max(shakeIntensity, isZoomed ? 0.08 : 0.22); crosshairSpread = 16; }
+        }
+
+        function stopEnemySpawning() {
+            if (spawnInterval) {
+                clearInterval(spawnInterval);
+                spawnInterval = null;
+            }
+        }
+
+        function getDifficultyScale() {
+            return Math.max(1, Math.floor(score / (BOSS_SPAWN_SCORE * 0.5)) + 1);
+        }
+
+        function startEnemySpawning() {
+            stopEnemySpawning();
+            const difficultyScale = getDifficultyScale();
+            const spawnDelay = Math.max(850, 1900 - (difficultyScale - 1) * 140);
+            spawnInterval = setInterval(spawnEnemy, spawnDelay);
         }
 
         function spawnEnemy() {
@@ -976,14 +1464,103 @@
             }
             if(!farEnough) return; 
 
-            const randomStyleIndex = Math.floor(Math.random() * enemyStyles.length); const typeConfig = enemyStyles[randomStyleIndex]; const enemy3D = create3DTankMesh(false, randomStyleIndex);
+            const difficultyScale = getDifficultyScale();
+            const randomStyleIndex = Math.floor(Math.random() * enemyStyles.length); const typeConfig = enemyStyles[randomStyleIndex];
+            const enemy3D = create3DTankMesh(false, randomStyleIndex);
             scene.add(enemy3D.mainGroup);
+
+            const hpMultiplier = 1 + (difficultyScale - 1) * 0.55;
+            const speedMultiplier = 1 + (difficultyScale - 1) * 0.18;
+            const rangeMultiplier = 1 + (difficultyScale - 1) * 0.08;
+            const enemyHp = Math.max(1, Math.round(typeConfig.hp * hpMultiplier));
+            const enemySpeed = typeConfig.speed * speedMultiplier;
+            const enemyRange = typeConfig.fireRange * rangeMultiplier;
+            const enemyCooldown = Math.max(650, typeConfig.cooldown - (difficultyScale - 1) * 260 + Math.random() * 180);
+
             enemies.push({ 
                 meshGroup: enemy3D.mainGroup, turretMesh: enemy3D.turret, segments: enemy3D.segments, exhaust: enemy3D.exhaust,
-                x: ex, z: ez, angle: Math.random() * Math.PI * 2, turretAngle: 0, speed: typeConfig.speed, hp: typeConfig.hp, maxHp: typeConfig.hp, fireRange: typeConfig.fireRange,
-                radius: typeConfig.type === 'heavy' ? 2.4 : 2.0, lastShot: 0, shotCooldown: typeConfig.cooldown + Math.random() * 500, type: typeConfig.type,
+                x: ex, z: ez, angle: Math.random() * Math.PI * 2, turretAngle: 0, speed: enemySpeed, hp: enemyHp, maxHp: enemyHp, fireRange: enemyRange,
+                radius: typeConfig.type === 'heavy' ? 2.4 : 2.0, lastShot: 0, shotCooldown: enemyCooldown, type: typeConfig.type,
                 stuckTimer: 0, dodgeTimer: 0, dodgeSide: 1, chosenAvoidSide: Math.random() < 0.5 ? 1 : -1, currentCoverTarget: null, aiUpdateTick: Math.floor(Math.random() * 4) 
             });
+        }
+
+        function spawnBoss() {
+            if (gameState !== STATE_GAME || gameOver || boss) return;
+            let bx, bz; let validSpawn = false; let attempts = 0;
+            while (!validSpawn && attempts < 120) {
+                bx = (Math.random() - 0.5) * (MAP_WIDTH - 80);
+                bz = (Math.random() - 0.5) * (MAP_DEPTH - 80);
+                attempts++;
+                let distToPlayer = Math.hypot(player.x - bx, player.z - bz);
+                if (distToPlayer < 90) continue;
+                let collides = false;
+                for (let o of obstacles) {
+                    if (checkCircleBoxColl(bx, bz, 6, o.x, o.z, o.w, o.d)) { collides = true; break; }
+                }
+                if (!collides) validSpawn = true;
+            }
+            if (!validSpawn) return;
+
+            enemies.forEach(e => {
+                scene.remove(e.meshGroup);
+                e.meshGroup.traverse(c => { if(c.geometry) cleanCleanupMesh(c); });
+            });
+            enemies = [];
+            bullets.forEach(b => {
+                scene.remove(b.mesh);
+                if (b.mesh.geometry) b.mesh.geometry.dispose();
+                if (b.mesh.material) b.mesh.material.dispose();
+                if (b.light) scene.remove(b.light);
+            });
+            bullets = [];
+
+            const boss3D = create3DTankMesh(false, 0, true);
+            scene.add(boss3D.mainGroup);
+            boss = {
+                meshGroup: boss3D.mainGroup,
+                turretMesh: boss3D.turret,
+                x: bx,
+                z: bz,
+                angle: Math.random() * Math.PI * 2,
+                turretAngle: 0,
+                speed: 0.035,
+                hp: 36,
+                maxHp: 36,
+                fireRange: 68,
+                radius: 3.8,
+                lastShot: 0,
+                shotCooldown: 1700,
+                phaseTimer: 0,
+                lastSpecialShot: 0,
+                markerPulse: 0,
+                visibleMarker: null
+            };
+            bossHud.style.display = 'block';
+            bossBarFill.style.width = '100%';
+            createAdvancedExplosion(bx, 2, bz, 0xff4444, 40, 0.5, 1.1, false);
+            playExplosionSound();
+            stopEnemySpawning();
+            const bossMarkerGeo = new THREE.RingGeometry(6.2, 7.8, 64);
+            boss.visibleMarker = new THREE.Mesh(
+                bossMarkerGeo,
+                new THREE.MeshBasicMaterial({
+                    color: 0xff4444,
+                    side: THREE.DoubleSide,
+                    transparent: true,
+                    opacity: 0.82,
+                    depthWrite: false,
+                    blending: THREE.AdditiveBlending
+                })
+            );
+            boss.visibleMarker.rotation.x = -Math.PI / 2;
+            boss.visibleMarker.position.set(bx, 0.02, bz);
+            boss.visibleMarker.renderOrder = 999;
+            scene.add(boss.visibleMarker);
+
+            boss.markerLight = new THREE.PointLight(0xff4444, 3.2, 30, 2);
+            boss.markerLight.position.set(bx, 2.2, bz);
+            scene.add(boss.markerLight);
         }
 
         function checkCircleBoxColl(cx, cz, cr, bx, bz, bw, bd) {
@@ -1015,12 +1592,28 @@
         function cleanCleanupMesh(mesh) { mesh.geometry.dispose(); if(Array.isArray(mesh.material)) mesh.material.forEach(m => m.dispose()); else mesh.material.dispose(); }
 
         function resetGame() {
-            score = 0; lives = 3; gameOver = false; shakeIntensity = 0; isZoomed = false; repairCountdown = 0; activeStationUnderPlayer = null;
+            score = 0; lives = maxLives; gameOver = false; shakeIntensity = 0; isZoomed = false; repairCountdown = 0; activeStationUnderPlayer = null;
+            cheatBuffer = [];
+            playerTankStyle = 0;
+            unlockedTankStyles = [true, false, false];
+            tankUnlockMessageTimer = 0;
+            tankUnlockMessage.style.display = 'none';
             repairPrompt.style.display = "none"; repairTimerDisplay.style.display = "none"; crosshairContainer.classList.remove("zoom-active"); scopeVignette.style.display = "none";
-            document.getElementById("score-display").innerText = "SCORE: " + score; document.getElementById("lives-display").innerText = "LEBEN: " + "❤❤•"; document.getElementById("game-over-screen").style.display = "none";
+            bossHud.style.display = "none"; bossBarFill.style.width = "100%";
+            document.getElementById("score-display").innerText = "SCORE: " + score; document.getElementById("lives-display").innerText = "LEBEN: " + "❤".repeat(lives); document.getElementById("game-over-screen").style.display = "none";
             player.x = -175; player.z = 175; player.angle = 0; player.turretAngle = 0; player.speed = 0; player.distTraveled = 0;
+            player.maxSpeed = playerTankPresets[0].maxSpeed;
+            player.accel = playerTankPresets[0].accel;
+            player.shotCooldown = playerTankPresets[0].shotCooldown;
+            player.radius = playerTankPresets[0].radius;
+            rebuildPlayerTank();
             bullets.forEach(b => { scene.remove(b.mesh); b.mesh.geometry.dispose(); b.mesh.material.dispose(); }); 
             enemies.forEach(e => { scene.remove(e.meshGroup); e.meshGroup.traverse(c => { if(c.geometry) cleanCleanupMesh(c); }); }); 
+            if (boss) {
+                if (boss.visibleMarker) { scene.remove(boss.visibleMarker); boss.visibleMarker.geometry.dispose(); boss.visibleMarker.material.dispose(); }
+                if (boss.markerLight) { scene.remove(boss.markerLight); }
+                scene.remove(boss.meshGroup); boss.meshGroup.traverse(c => { if(c.geometry) cleanCleanupMesh(c); }); boss = null;
+            }
             particles.forEach(p => { scene.remove(p.mesh); p.mesh.geometry.dispose(); p.mesh.material.dispose(); }); 
             tracks.forEach(t => { scene.remove(t.mesh); t.mesh.geometry.dispose(); t.mesh.material.dispose(); });
             bullets = []; enemies = []; particles = []; tracks = []; generateProceduralCity();
@@ -1053,7 +1646,6 @@
             let nowTime = Date.now();
 
             if (gameState === STATE_MENU) {
-                // UPDATE: Helligkeit im Menü hochregeln, damit die Vorschau gut sichtbar ist
                 ambientLight.intensity = 1.9;
                 sunLight.intensity = 1.2;
 
@@ -1067,7 +1659,15 @@
 
             if (gameOver) { updateEngineSound(0); return; }
 
+            updateUnlockedTanks();
+            if (tankUnlockMessageTimer > 0) tankUnlockMessageTimer--;
+            if (tankUnlockMessageTimer <= 0) tankUnlockMessage.style.display = 'none';
+            if (score >= BOSS_SPAWN_SCORE && !boss) { spawnBoss(); }
+            if (!boss && !spawnInterval && !gameOver) { startEnemySpawning(); }
             if (crosshairSpread > 0) { crosshairSpread *= 0.85; if (crosshairSpread < 0.1) crosshairSpread = 0; }
+            if (boss) {
+                boss.markerPulse = (boss.markerPulse + 0.12) % (Math.PI * 2);
+            }
             bracketTL.style.transform = `translate(${-crosshairSpread}px, ${-crosshairSpread}px)`; bracketTR.style.transform = `translate(${crosshairSpread}px, ${-crosshairSpread}px)`;
             bracketBL.style.transform = `translate(${-crosshairSpread}px, ${crosshairSpread}px)`; bracketBR.style.transform = `translate(${crosshairSpread}px, ${crosshairSpread}px)`;
             crosshairRing.style.transform = `scale(${1 + (crosshairSpread * 0.04)})`;
@@ -1095,13 +1695,13 @@
                 repairCountdown--; player.speed = 0; repairTimerDisplay.innerText = `REPARATUR: ${(repairCountdown / 50).toFixed(1)}s`; repairTimerDisplay.style.display = "block"; repairPrompt.style.display = "none";
                 if (repairCountdown <= 0) {
                     repairTimerDisplay.style.display = "none";
-                    if (activeStationUnderPlayer && lives < 3) {
+                    if (activeStationUnderPlayer && lives < maxLives) {
                         lives++; document.getElementById("lives-display").innerText = "LEBEN: " + "❤".repeat(lives);
                         let st = activeStationUnderPlayer; st.isActive = false; st.cooldownTimer = 750; st.ring.material.color.setHex(0x333333); st.crystals.forEach(cry => cry.material.color.setHex(0x333333)); activeStationUnderPlayer = null;
                     }
                 }
             } else {
-                repairTimerDisplay.style.display = "none"; repairPrompt.style.display = (activeStationUnderPlayer && lives < 3) ? "block" : "none";
+                repairTimerDisplay.style.display = "none"; repairPrompt.style.display = (activeStationUnderPlayer && lives < maxLives) ? "block" : "none";
             }
 
             if (repairCountdown <= 0) {
@@ -1151,7 +1751,7 @@
 
             for (let i = bullets.length - 1; i >= 0; i--) {
                 let b = bullets[i]; b.x += b.vx; b.z += b.vz; b.mesh.position.set(b.x, b.y, b.z);
-                if (Math.random() < 0.4) createAdvancedExplosion(b.x, b.y, b.z, b.colorHex, 1, 0.1, 0.1, false);
+                if (Math.random() < (b.isPlayer ? 0.25 : 0.08)) createAdvancedExplosion(b.x, b.y, b.z, b.colorHex, 1, 0.1, 0.1, false);
                 if (Math.abs(b.x) > MAP_WIDTH/2 || Math.abs(b.z) > MAP_DEPTH/2) { scene.remove(b.mesh); b.mesh.geometry.dispose(); b.mesh.material.dispose(); bullets.splice(i, 1); continue; }
 
                 let hitObstacle = false;
@@ -1170,6 +1770,7 @@
                     if (lives <= 0) { gameOver = true; document.getElementById("final-score").innerText = "Dein finaler Score: " + score; document.getElementById("game-over-screen").style.display = "flex"; document.exitPointerLock(); }
                 } 
                 else if (b.isPlayer) {
+                    let hitEnemy = false;
                     for (let eIdx = enemies.length - 1; eIdx >= 0; eIdx--) {
                         let e = enemies[eIdx];
                         if (Math.hypot(e.x - b.x, e.z - b.z) < e.radius) {
@@ -1180,7 +1781,20 @@
                                 createAdvancedExplosion(e.x, 1.2, e.z, 0xff5500, 30, 0.5, 1.6, false); scene.remove(e.meshGroup); e.meshGroup.traverse(c => { if(c.geometry) cleanCleanupMesh(c); });
                                 enemies.splice(eIdx, 1); score += (e.type === 'heavy') ? 250 : 100; playExplosionSound();
                             }
-                            document.getElementById("score-display").innerText = "SCORE: " + score; break;
+                            document.getElementById("score-display").innerText = "SCORE: " + score; hitEnemy = true;
+                            break;
+                        }
+                    }
+                    if (!hitEnemy && boss && Math.hypot(boss.x - b.x, boss.z - b.z) < boss.radius) {
+                        scene.remove(b.mesh); b.mesh.geometry.dispose(); b.mesh.material.dispose(); bullets.splice(i, 1); boss.hp--;
+                        createAdvancedExplosion(b.x, b.y, b.z, 0xffaa00, 24, 0.28, 1.5, false); playHitSound();
+                        bossBarFill.style.width = `${Math.max(0, (boss.hp / boss.maxHp) * 100)}%`;
+                        if (boss.hp <= 0) {
+                            createAdvancedExplosion(boss.x, 1.6, boss.z, 0xff3300, 45, 0.7, 1.8, false); scene.remove(boss.meshGroup); boss.meshGroup.traverse(c => { if(c.geometry) cleanCleanupMesh(c); });
+                            boss = null; score += 500; playExplosionSound();
+                            document.getElementById("score-display").innerText = "SCORE: " + score;
+                            bossHud.style.display = 'none';
+                            startEnemySpawning();
                         }
                     }
                 }
@@ -1217,6 +1831,78 @@
                 if (currentDist < e.fireRange && (nowTime - e.lastShot > e.shotCooldown)) { if (checkSightlineClear(e.x, e.z, player.x, player.z)) { shoot(e.x, e.z, e.turretAngle, false); e.lastShot = nowTime; } }
             });
 
+            if (boss) {
+                let dx = player.x - boss.x, dz = player.z - boss.z; let currentDist = Math.hypot(dx, dz);
+                boss.turretAngle = Math.atan2(-dz, dx);
+                boss.phaseTimer++;
+                if (currentDist > 18) {
+                    boss.angle = Math.atan2(-dz, dx);
+                    boss.x += Math.cos(boss.angle) * boss.speed;
+                    boss.z -= Math.sin(boss.angle) * boss.speed;
+                } else if (currentDist < 12) {
+                    boss.angle = Math.atan2(dz, -dx);
+                    boss.x -= Math.cos(boss.angle) * boss.speed * 0.9;
+                    boss.z += Math.sin(boss.angle) * boss.speed * 0.9;
+                }
+                boss.meshGroup.position.set(boss.x, 0, boss.z);
+                boss.meshGroup.rotation.y = boss.angle;
+                boss.turretMesh.rotation.y = boss.turretAngle - boss.angle;
+                if (currentDist < boss.fireRange && nowTime - boss.lastShot > boss.shotCooldown && checkSightlineClear(boss.x, boss.z, player.x, player.z)) {
+                    const burstCount = 1;
+                    const spread = 0;
+                    shoot(boss.x, boss.z, boss.turretAngle + spread, false);
+                    boss.lastShot = nowTime;
+                }
+                if (nowTime - boss.lastSpecialShot > 3200 && currentDist < boss.fireRange * 0.8) {
+                    for (let spreadShot = 0; spreadShot < 2; spreadShot++) {
+                        const waveAngle = (Math.PI * 2 / 2) * spreadShot;
+                        shoot(boss.x, boss.z, boss.turretAngle + waveAngle * 0.1, false);
+                    }
+                    boss.lastSpecialShot = nowTime;
+                }
+                bossHud.style.display = 'block';
+                bossBarFill.style.width = `${Math.max(0, (boss.hp / boss.maxHp) * 100)}%`;
+                boss.markerPulse += 0.08;
+                const markerScale = 1 + Math.sin(boss.markerPulse) * 0.12;
+                if (boss.visibleMarker) {
+                    boss.visibleMarker.position.set(boss.x, 0.02, boss.z);
+                    boss.visibleMarker.rotation.z += 0.015;
+                    boss.visibleMarker.material.opacity = 0.55 + Math.abs(Math.sin(boss.markerPulse)) * 0.32;
+                    boss.visibleMarker.scale.setScalar(markerScale * 1.35);
+                }
+                if (boss.markerLight) {
+                    boss.markerLight.position.set(boss.x, 2.6, boss.z);
+                    boss.markerLight.intensity = 2.2 + Math.abs(Math.sin(boss.markerPulse)) * 1.4;
+                }
+                boss.meshGroup.traverse((child) => {
+                    if (child.material && child.material.emissive) {
+                        child.material.emissiveIntensity = 0.2 + Math.abs(Math.sin(boss.markerPulse)) * 0.4;
+                    }
+                });
+                boss.meshGroup.scale.setScalar(1 + Math.abs(Math.sin(boss.markerPulse)) * 0.03);
+
+                const bossWorldPos = new THREE.Vector3(boss.x, 1.8, boss.z);
+                const bossScreenPos = bossWorldPos.clone().project(camera);
+                const bossIsOnScreen = bossScreenPos.x >= -1.1 && bossScreenPos.x <= 1.1 && bossScreenPos.y >= -1.1 && bossScreenPos.y <= 1.1 && bossScreenPos.z > 0;
+                const bossDistance = Math.hypot(player.x - boss.x, player.z - boss.z);
+
+                if (bossIsOnScreen && bossDistance < 28) {
+                    bossMarker.style.display = 'none';
+                } else {
+                    const bounds = getCanvasBounds();
+                    const markerX = ((bossScreenPos.x * 0.5 + 0.5) * bounds.width);
+                    const markerY = ((-bossScreenPos.y * 0.5 + 0.5) * bounds.height);
+                    const clampedX = Math.max(22, Math.min(bounds.width - 22, markerX));
+                    const clampedY = Math.max(22, Math.min(bounds.height - 22, markerY));
+                    bossMarker.style.left = `${clampedX}px`;
+                    bossMarker.style.top = `${clampedY}px`;
+                    bossMarker.style.display = 'block';
+                }
+            } else {
+                bossHud.style.display = 'none';
+                bossMarker.style.display = 'none';
+            }
+
             let targetDist = isZoomed ? 8 : 20; let targetHeight = isZoomed ? 5 : 12;
             currentCamDist += (targetDist - currentCamDist) * 0.15; currentCamHeight += (targetHeight - currentCamHeight) * 0.15;
             let camX = player.x - Math.cos(player.turretAngle) * currentCamDist; let camZ = player.z + Math.sin(player.turretAngle) * currentCamDist;
@@ -1231,7 +1917,17 @@
             }
         }
 
-        function animate() { requestAnimationFrame(animate); updateLogic(); renderer.render(scene, camera); }
+        function animate() { 
+            requestAnimationFrame(animate); 
+            updateLogic(); 
+            renderer.render(scene, camera); 
+            if (menuPreviewMesh) {
+                menuPreviewMesh.mainGroup.rotation.y += 0.01;
+                menuPreviewMesh.turret.rotation.y = -0.2 + Math.sin(Date.now() * 0.003) * 0.1;
+                menuPreviewRenderer.render(menuPreviewScene, menuPreviewCamera);
+            }
+        }
+        updateMenuTankPreview();
         animate();
     </script>
 </body>
