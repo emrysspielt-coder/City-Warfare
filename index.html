@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>City Warfare</title>
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="game-canvas-container">
+      <!-- Hauptmenü -->
+      <div id="main-menu-screen" class="screen">
+        <div id="menu-requirement-banner">BENÖTIGT: 0 PUNKTE</div>
+        <div class="menu-layout">
+          <div class="menu-panel">
+            <h1>CITY WARFARE</h1>
+            <div class="subtitle">TACTICAL TANK COMBAT</div>
+            <div id="tank-select-panel">
+              <h2>Tank Auswahl</h2>
+              <div id="tank-option-list">
+                <button class="tank-option" data-index="0">STANDARD</button>
+                <button class="tank-option" data-index="1">HEAVY</button>
+                <button class="tank-option" data-index="2">SCOUT</button>
+              </div>
+            </div>
+            <button id="start-button" class="menu-btn">GEFECHT STARTEN</button>
+            <button
+              id="reset-highscore-button"
+              class="menu-btn"
+              style="font-size: 0.9rem; padding: 10px 24px"
+            >
+              HIGHSCORE ZURÜCKSETZEN
+            </button>
+            <div
+              style="
+                margin-top: 30px;
+                font-size: 0.8rem;
+                color: #a1aab8;
+                line-height: 1.6;
+              "
+            >
+              WASD = Steuern &bull; Maus = Turm drehen &bull; Links-Klick =
+              Schießen<br />
+              SHIFT (Halten) = Sniper-Visier &bull; E = Reparieren an Stationen
+            </div>
+          </div>
+          <div class="menu-preview-panel">
+            <div id="menu-tank-preview"></div>
+            <div id="menu-preview-label">STANDARD</div>
+            <div id="menu-preview-meta">VERFÜGBAR</div>
+            <div id="menu-preview-stats"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Over Screen -->
+      <div id="game-over-screen" class="screen" style="display: none">
+        <h1 style="color: #ff3333">PANZER ZERSTÖRT</h1>
+        <div id="final-score" class="subtitle" style="margin-bottom: 30px">
+          Dein finaler Score: 0
+        </div>
+        <button id="restart-button" class="menu-btn">ERNEUT VERSUCHEN</button>
+        <button
+          id="to-menu-button"
+          class="menu-btn"
+          style="font-size: 0.9rem; padding: 10px 25px"
+        >
+          HAUPTMENÜ
+        </button>
+      </div>
+
+      <!-- In-Game UI -->
+      <div id="ui-container">
+        <div class="ui-row">
+          <div id="score-display" class="ui-box">SCORE: 0</div>
+          <div id="reload-container">
+            <div class="bar-label">GESCHÜTZ-RELOAD</div>
+            <div id="reload-bar"><div id="reload-bar-fill"></div></div>
+          </div>
+        </div>
+        <div class="ui-row">
+          <div id="lives-display" class="ui-box">LEBEN: ❤❤❤❤</div>
+        </div>
+        <div class="ui-row">
+          <div id="boss-hud" class="ui-box">
+            <div
+              style="
+                font-size: 0.75rem;
+                color: #ff9a9a;
+                margin-bottom: 4px;
+                letter-spacing: 1px;
+              "
+            >
+              BOSS
+            </div>
+            <div id="boss-bar"><div id="boss-bar-fill"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reparatursystem Prompts -->
+      <div id="repair-prompt">DRÜCKE [E] FÜR REPARATUR</div>
+      <div id="repair-timer-display">REPARATUR: 3.0s</div>
+      <div id="boss-marker">BOSS</div>
+      <div id="tank-unlock-message">TANK FREIGESCHALTET</div>
+
+      <!-- Sniper-Visier Effekte -->
+      <div id="scope-vignette"></div>
+
+      <!-- Dynamisches Fadenkreuz -->
+      <div id="crosshair-container">
+        <div id="bracket-tl" class="bracket"></div>
+        <div id="bracket-tr" class="bracket"></div>
+        <div id="bracket-bl" class="bracket"></div>
+        <div id="bracket-br" class="bracket"></div>
+        <div id="crosshair-ring"></div>
+        <div id="crosshair-dot"></div>
+      </div>
+
+      <button id="fullscreen-btn">VOLLBILD</button>
+    </div>
+
+    <!-- Game Script -->
+    <script src="game.js"></script>
+  </body>
+</html>
